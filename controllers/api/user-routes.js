@@ -1,6 +1,18 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+router.get('/', async (req, res) => {
+    try {
+    const userData = await User.findAll({
+     
+    });
+    console.log('user get')
+    return res.json(userData)
+    } catch (err) {
+      res.json(err)
+    }
+    })
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
@@ -22,42 +34,43 @@ router.post('/', async (req, res) => {
 });
 
 // Login
-router.post('/login', async (req, res) => {
-  try {
-    const dbUserData = await User.findOne({
-      where: {
-        email: req.body.email,
-      },
-    });
+// router.post('/login', async (req, res) => {
+//   try {
+//     const dbUserData = await User.findOne({
+//       where: {
+//         email: req.body.email,
+//       },
+//     });
 
-    if (!dbUserData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-    }
+//     if (!dbUserData) {
+//       res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password. Please try again!' });
+//       return;
+//     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+//     const validPassword = await dbUserData.checkPassword(req.body.password);
 
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-    }
+//     if (!validPassword) {
+//       res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password. Please try again!' });
+//       return;
+//     }
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
+//     req.session.save(() => {
+//       req.session.loggedIn = true;
 
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//       res
+//         .status(200)
+//         .json({ user: dbUserData, message: 'You are now logged in!' });
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+//   console.log(req.body)
+// });
 
 // Logout
 router.post('/logout', (req, res) => {

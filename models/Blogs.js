@@ -33,12 +33,12 @@ class Blogs extends Model { }
             },
                 date: {
                     type: DataTypes.STRING,
-                    // allowNull: false,
+                    allowNull: false,
                 },
 
                 content: {
                     type:DataTypes.TEXT,
-                    // allowNull: false, 
+                    allowNull: false, 
 
                 }
         },

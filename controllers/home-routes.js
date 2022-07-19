@@ -1,14 +1,24 @@
 const res = require('express/lib/response');
-
 const router = require('express').Router();
+const Blogs = require('../models/Blogs')
 
 router.get ('/', async (req, res) => {
     
-res.render('homepage')
+
 
 })
 
-
+router.get('/', async (req, res) => {
+    try {
+    const blogData = await Blogs.findAll()
+    
+      console.log("get blogs")
+     res.render('homepage', blogData)
+    }
+    catch (err){
+        console.log(err)
+    }
+})
 
 router.get('/signup', (req, res) => {
    
@@ -24,5 +34,18 @@ router.get('/login', (req, res) => {
   
     res.render('login');
   });
+
+
+router.get ('/blogpost', async (req, res) => {
+    
+    res.render('blogpost')
+    
+    })
+
+    router.get ('/dashboard', async (req, res) => {
+    
+        res.render('dashboard')
+        
+        })
 
 module.exports = router;

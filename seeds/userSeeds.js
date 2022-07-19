@@ -1,4 +1,4 @@
-const User = require('../models/Blogs')
+const User = require('../models/User')
 
 const userData = [
     {

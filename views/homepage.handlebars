@@ -1,22 +1,18 @@
+<h3>blog posts</h3>
+{{#each blogs}}
+<a href="/blogpost" class="text-decoration-none"> 
 <div class="card mb-5">
     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-    <h5> This is the blog title</h5>
-    <h6> Posted by Nadybee on 07/18/2022</h6>
+    <h5> {{title}}</h5>
+    <h6> Posted by {{username}} on {{date}}</h6>
     </div>
-    <div class="card-body">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-        Quas nam a minima nulla, at harum sed excepturi ab aliquid consectetur maxime, 
-        accusantium inventore ratione error, fuga nostrum fugiat laudantium? Ex odit quaerat magni asperiores nemo maxime maiores vitae laudantium, voluptatibus eligendi blanditiis nihil tempora autem soluta eum quia nostrum sint quae. Nisi harum quos, veniam, natus amet incidunt ea magni sunt quo, illum laudantium assumenda.
+    <div class="card-body text-dark">
+        {{content}}
     </div>
 </div>
-<div class="card">
-    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-    <h5> This is the blog title</h5>
-    <h6> Posted by Nadybee on 07/18/2022</h6>
-    </div>
-    <div class="card-body">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-        Quas nam a minima nulla, at harum sed excepturi ab aliquid consectetur maxime, 
-        accusantium inventore ratione error, fuga nostrum fugiat laudantium? Ex odit quaerat magni asperiores nemo maxime maiores vitae laudantium, voluptatibus eligendi blanditiis nihil tempora autem soluta eum quia nostrum sint quae. Nisi harum quos, veniam, natus amet incidunt ea magni sunt quo, illum laudantium assumenda.
-    </div>
-</div>
+</a>
+{{else}}
+ <p> no blog posts yet!</p>
+{{/each}}
+   
+

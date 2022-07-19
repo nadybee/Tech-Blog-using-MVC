@@ -19,7 +19,7 @@ const blogData = [
     {
         blog_title: "Best ways to manage state",
         username: "pfairbourne",
-        user_id: 2,
+        user_id: 3,
         date: '06/10/2022',
         content: 'Nam quasi possimus aut omnis praesentium in saepe quia eos quia dolores. Quo quia illum ut maxime ipsam est omnis temporibus aut tenetur optio. Vel suscipit quam ex dolorum ipsum ut culpa officia et laboriosam quaerat non earum dolore.'
     },

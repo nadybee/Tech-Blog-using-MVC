@@ -1,24 +1,19 @@
 
 
 
-<div class="container">
-	<div class="row">
-	    
-	    <div class="col-md-8 col-md-offset-2">
-	        
-    		<h3>Create a blog post</h3>
+<div class="container d-flex justify-content-center flex-column align-items-center">
+
+    		<form action="" method="POST" class ="bg-light p-3 mb-3 w-100">
     		
-    		<form action="" method="POST">
-    		
-    		    
+    		    	<h3>Create a blog post</h3>
     		    <div class="form-group">
     		        <label for="title">Title <span class="require">*</span></label>
-    		        <input type="text" class="form-control" name="title" />
+    		        <input type="text" class="form-control" id="blog-title" name="title" />
     		    </div>
     		    
     		    <div class="form-group">
     		        <label for="description">Content</label>
-    		        <textarea rows="5" class="form-control" name="description" ></textarea>
+    		        <textarea rows="5" class="form-control" id="blog-content" name="description" ></textarea>
     		    </div>
     		    
     		    <div class="form-group">
@@ -26,7 +21,7 @@
     		    </div>
     		    
     		    <div class="form-group">
-    		        <button type="submit" class="btn btn-primary">
+    		        <button type="submit" class="btn btn-primary" id="create-blog">
     		            Create
     		        </button>
     		        <button class="btn btn-default">
@@ -35,13 +30,11 @@
     		    </div>
     		    
     		</form>
-		</div>
-		
-	</div>
+	
 
     <a href="/blogpost" class="text-decoration-none"> 
 <div class="card mb-5">
-    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <div class="card-header bg-warning text-white d-flex justify-content-between align-items-center">
     <h5> This is the blog title</h5>
     <h6> Posted by Nadybee on 07/18/2022</h6>
     </div>
@@ -53,7 +46,7 @@
 </div>
 </a>
 <div class="card">
-    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <div class="card-header bg-warning text-white d-flex justify-content-between align-items-center">
     <h5> This is the blog title</h5>
     <h6> Posted by Nadybee on 07/18/2022</h6>
     </div>
@@ -63,3 +56,6 @@
         accusantium inventore ratione error, fuga nostrum fugiat laudantium? Ex odit quaerat magni asperiores nemo maxime maiores vitae laudantium, voluptatibus eligendi blanditiis nihil tempora autem soluta eum quia nostrum sint quae. Nisi harum quos, veniam, natus amet incidunt ea magni sunt quo, illum laudantium assumenda.
     </div>
 </div>
+		
+	</div>
+

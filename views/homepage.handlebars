@@ -2,9 +2,9 @@
 {{#each blogs as |blog|}}
 <a href="/blogpost" class="text-decoration-none"> 
 <div class="card mb-5">
-    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
     <h5> {{blog.blog_title}}</h5>
-    <h6> Posted by {{blog.username}} on {{blog.date}}</h6>
+    <p class=""> Posted by {{blog.username}} on {{blog.date}}</p>
     </div>
     <div class="card-body text-dark">
         {{blog.content}}

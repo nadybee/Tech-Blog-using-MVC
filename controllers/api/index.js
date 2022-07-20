@@ -8,6 +8,6 @@ const dashboardRoutes = require('./dashboard-routes')
 
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes)
-router.use('./dashboard', dashboardRoutes)
+router.use('/dashboard', dashboardRoutes)
 
 module.exports = router;

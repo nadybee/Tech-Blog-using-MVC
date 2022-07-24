@@ -1,19 +1,17 @@
 <div class="container"> 
 
-
 <div class="card mb-5">
-    <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
-    <h5> This is the blog title</h5>
-    <h6> Posted by Nadybee on 07/18/2022</h6>
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <h5> {{blog_title}}</h5>
+    <p class=""> Posted by {{username}} on {{format_date date}}</p>
     </div>
     <div class="card-body text-dark">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-        Quas nam a minima nulla, at harum sed excepturi ab aliquid consectetur maxime, 
-        accusantium inventore ratione error, fuga nostrum fugiat laudantium? Ex odit quaerat magni asperiores nemo maxime maiores vitae laudantium, voluptatibus eligendi blanditiis nihil tempora autem soluta eum quia nostrum sint quae. Nisi harum quos, veniam, natus amet incidunt ea magni sunt quo, illum laudantium assumenda.
+        {{content}}
     </div>
 </div>
+
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="add a comment" aria-label="add a comment" aria-describedby="button-addon2">
+  <input type="text" class="form-control" id="comment" placeholder="add a comment" aria-label="add a comment" aria-describedby="button-addon2">
   <div class="input-group-append">
     <button class="btn btn-primary" type="button" id="post-comment">Post</button>
   </div>
@@ -21,10 +19,13 @@
 
 <h3>Comments:</h3>
 <ul class="list-group bg-light">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
+ {{#each comments as |comment|}}   
+  <li class="list-group-item d-inline-flex justify-content-between"> 
+      <p> {{comment.content}}</p>
+      <div class="d-inline-flex justify-content-between"> 
+      <p> {{comment.username}} {{ format_date comment.date}}</p>
+      </div>
+      </li>
+{{/each}}
 </ul>
 </div>

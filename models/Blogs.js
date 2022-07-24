@@ -26,13 +26,13 @@ class Blogs extends Model { }
               },
               user_id: {
                 type: DataTypes.INTEGER,
-                // references: {
-                //   model: User,
-                //   key: 'id'
-                // }
+                references: {
+                  model: User,
+                  key: 'id'
+                }
             },
                 date: {
-                    type: DataTypes.STRING,
+                    type: DataTypes.DATE,
                     allowNull: false,
                 },
 

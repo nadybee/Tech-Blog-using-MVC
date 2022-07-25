@@ -21,8 +21,8 @@ async function blogpostFormHandler (event){
       })
       .then (() => {
 
- document.location.replace('/') 
-       })
+        document.location.reload() 
+         })
 }
 
 

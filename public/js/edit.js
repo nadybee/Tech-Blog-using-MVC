@@ -5,20 +5,19 @@ async function deleteBlogHandler (event){
         console.log(event.target)
     const id = event.target.getAttribute('data-delete')
 
-    await fetch (`/api/dashboard/${id}`,{
+    const response = await fetch (`/api/dashboard/${id}`,{
         method: 'DELETE'
     })
-.then (() => {
-
-document.location.reload() 
- })
-
-
-}
-    
+    if(response.ok){
+        document.location.replace('/dashboard')
+    }
+    else {
+        alert('Failed to delete blogpost')
+        }
+    }
   }
   
   
     document
-    .querySelector('.card')
+    .querySelector('.edit-buttons')
     .addEventListener('click', deleteBlogHandler);

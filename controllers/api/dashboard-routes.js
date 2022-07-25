@@ -39,10 +39,10 @@ const withAuth = require("../../utils/auth");
       
     router.delete('/:id', async (req, res) => {
       try {
-        const blogtData = await Blogs.destroy({
+        const blogData = await Blogs.destroy({
           where: {
-            id: req.params.id
-           
+            id: req.params.id,
+            user_id: req.session.user_id,
           },
         });
     

@@ -29,12 +29,12 @@ const router = require('express').Router();
             res.status(404).json({ message: 'No blog found with that id!' });
             return;
           } 
-              req.session.save(() => {
-              req.session.blog_id = blog.id 
+            //   req.session.save(() => {
+            //   req.session.blog_id = blog.id 
               
-              res.status(200)
-              .json(blog)
-              })
+            //   res.status(200)
+            //   .json(blog)
+            //   })
          
         } catch (err) {
           console.log(err)
@@ -54,10 +54,10 @@ router.post('/', async (req, res) => {
         username: req.session.username,
         user_id: req.session.user_id,
         date: new Date(),
-        // blog_id: req.session.blog_id
+        blog_id: req.body.blogId
          // username: "nady",
         // user_id: 4,
-        blog_id: 1
+        // blog_id: 1
      
       });
       res.status(200).json(postCommentData);

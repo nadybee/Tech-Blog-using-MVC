@@ -1,7 +1,31 @@
+<div class="blog-posts">
+{{#each blogs as |blog|}}
+<div class="card mb-5 blog-id" data-blogId={{id}}>
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
 
+    <h5> {{blog.blog_title}}</h5>
+	
+<div class="d-flex-grid"> 
+    <p class=""> Posted by {{blog.username}} on {{format_date blog.date}}</p>
+	
+	<a class="text-decoration-underline me-3 pe-auto text-white" data-edit={{id}}>edit</a>
+	<a class="text-decoration-underline me-3 pe-auto text-white" data-delete={{id}}>delete</a>
+	
+	</div>
+    </div>
+    <div class="card-body text-dark">
+        {{blog.content}}
+    </div>
+</div>
+
+{{else}}
+ <p> no blog posts yet!</p>
+{{/each}}
+  </div>  
 
 
 <div class="container d-flex justify-content-center flex-column align-items-center">
+	
 
     		{{!-- <form action="/dashboard" method="POST" class ="bg-light p-3 mb-3 w-100"> --}}
             <form class ="bg-light p-3 mb-3 w-100">

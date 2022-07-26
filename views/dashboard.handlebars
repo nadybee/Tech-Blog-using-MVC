@@ -8,7 +8,7 @@
         class="card-header bg-primary text-white d-flex justify-content-between align-items-center"
       >
      
-          <h5 contenteditable="true" data-title="{{blog.blog_title}}" > {{blog.blog_title}}</h5>
+          <h5 class= "title" contenteditable="true" data-title="{{blog.blog_title}}" > {{blog.blog_title}}</h5>
  
         <div class="d-flex-grid">
           <p class="">
@@ -19,15 +19,16 @@
     
         </div>
       </div>
-      <div class="card-body text-dark" contenteditable="true" data-content = {{blog.contnent}}>
-        {{blog.content}}
+      <div class="card-body text-dark">
+        <p class = "content" contenteditable="true" data-content = {{blog.contnent}}>	{{blog.content}} </p>
+
 		<br>
 			<div class="edit-buttons">
 		<button class="btn btn-sm btn-primary m-2"  data-edit="{{id}}"> save edits</button>
 	
            
             <button
-              class="btn btn-link text-primary me-3 fw-lighter"
+              class="btn btn-link text-primary me-3 fw-lighter delete"
               data-delete="{{id}}"
             >delete post</button>
           </div>

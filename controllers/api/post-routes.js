@@ -7,7 +7,7 @@ const withAuth = require("../../utils/auth");
 
 //allows user to delete a blog
 
-    router.delete('/:id', async (req, res) => {
+    router.delete('/:id', withAuth, async (req, res) => {
       try {
         const blogData = await Blogs.destroy({
           where: {
@@ -22,11 +22,14 @@ const withAuth = require("../../utils/auth");
     });
    
   //allows user to edit there post  
-    router.put('/:id', (req, res) => {
+
+    router.put('/edit/:id', withAuth, (req, res) => {
+      console.log(req.body)
       try{
       const editBlogData = Blogs.update({
         blog_title: req.body.blog_title,
-        content: req.body.content
+        content: req.body.content,
+        date: new Date()
       },
       {
         where: {
@@ -34,6 +37,7 @@ const withAuth = require("../../utils/auth");
         }
       })
       res.status(200).json(editBlogData);
+      console.log(res)
       }
       catch (err){
         res.status(500).json(err);
@@ -42,7 +46,7 @@ const withAuth = require("../../utils/auth");
       
     
    //allows user to post a new blog 
-    router.post('/', async (req, res) => {
+    router.post('/', withAuth, async (req, res) => {
         console.log(req.session.user_id)
         try {
           const postblogData = await Blogs.create({

@@ -11,7 +11,7 @@ async function blogpostFormHandler (event){
       return;
     }
 
-       await fetch('/api/dashboard', {
+       await fetch('/api/post', {
         method: 'POST',
         body: JSON.stringify({ 
           blog_title, 

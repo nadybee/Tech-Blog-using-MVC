@@ -1,12 +1,25 @@
 const res = require('express/lib/response');
 const Comments = require("../../models/Comments")
 const Blogs = require('../../models/Blogs')
-const User = require('../../models/User')
+const User = require('../../models/User');
+const { response } = require('express');
 
 const router = require('express').Router();
 
 
-
+    router.get('/', async (req, res) => {
+        try {
+        const blogData = await Blogs.findAll().catch((err)=>{
+            res.json(err)
+        })
+        
+      res.json(blogData)
+       
+        }
+        catch (err){
+            console.log('there was an error '+ err)
+        }
+    })
 
 
 //get the blog
@@ -57,7 +70,7 @@ router.post('/', async (req, res) => {
         blog_id: req.body.blogId
          // username: "nady",
         // user_id: 4,
-        // blog_id: 1
+   
      
       });
       res.status(200).json(postCommentData);

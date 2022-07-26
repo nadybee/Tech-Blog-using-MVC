@@ -3,61 +3,45 @@ const router = require('express').Router();
 const Blogs  = require('../../models/Blogs');
 const withAuth = require("../../utils/auth");
 
-    // router.get('/', withAuth, async (req, res) => {
-    //     try {
-    //     const blogData = await Blogs.findAll().catch((err)=>{
-    //         res.json(err)
-    //     })
-        
-    //      res.render('dashboard', {
-    //       blogData,
-    //       loggedIn: req.session.loggedIn,
-    //     })
-       
-    //     }
-    //     catch (err){
-    //         console.log('there was an error '+ err)
-    //     }
-    // })
 
-    router.get("/", async (req, res) => {
-      try {
-        const blogData = await Blogs.findAll().catch((err) => {
-          res.json(err)
-        })
-        const userBlogs = blogData.filter((blog)=>blog.user_id ===req.session.user_id)
-        const blogs = userBlogs.map((blog) => blog.get({ plain: true }))
-    
-        res.render("dashboard", {
-          blogs,
-          loggedIn: req.session.loggedIn,
-        })
-      } catch (err) {
-        console.log(err)
-      }
-    })
-      
+
+//allows user to delete a blog
+
     router.delete('/:id', async (req, res) => {
       try {
         const blogData = await Blogs.destroy({
           where: {
             id: req.params.id,
-            user_id: req.session.user_id,
           },
         });
-    
-        if (!blogtData) {
-          res.status(404).json({ message: 'No blog found with this id!' });
-          return;
-        }
-    
+ 
         res.status(200).json(blogData);
       } catch (err) {
         res.status(500).json(err);
       }
     });
-     
-
+   
+  //allows user to edit there post  
+    router.put('/:id', (req, res) => {
+      try{
+      const editBlogData = Blogs.update({
+        blog_title: req.body.blog_title,
+        content: req.body.content
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      })
+      res.status(200).json(editBlogData);
+      }
+      catch (err){
+        res.status(500).json(err);
+      }
+    })
+      
+    
+   //allows user to post a new blog 
     router.post('/', async (req, res) => {
         console.log(req.session.user_id)
         try {

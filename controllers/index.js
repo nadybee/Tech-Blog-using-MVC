@@ -3,6 +3,8 @@ const dashboardRoutes = require('./dashboard-routes.js');
 const apiRoutes = require('./api');
 const homeRoutes = require('./home-routes.js');
 
+
+//middleware for routes
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
 router.use('/dashboard', dashboardRoutes);

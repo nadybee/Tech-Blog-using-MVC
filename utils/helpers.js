@@ -1,3 +1,4 @@
+//used to format the date on the blogposts
 module.exports = {
     format_time: (date) => {
       return date.toLocaleTimeString();

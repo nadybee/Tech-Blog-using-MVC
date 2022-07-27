@@ -4,7 +4,7 @@ const Blogs = require("../models/Blogs")
 const Comments = require("../models/Comments")
 const withAuth = require("../utils/auth")
 
-
+//gets homepage and renders all the blogposts
 router.get("/", async (req, res) => {
   try {
     const blogData = await Blogs.findAll().catch((err) => {
@@ -21,10 +21,12 @@ router.get("/", async (req, res) => {
   }
 })
 
+//gets signup page
 router.get("/signup", (req, res) => {
   res.render("signup")
 })
 
+//gets login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/")
@@ -33,63 +35,27 @@ router.get("/login", (req, res) => {
   res.render("login")
 })
 
+//gets single blogpost with comments, must be signed in
+router.get("/blogpost/:id", withAuth, async (req, res) => {
+  try {
+    const blogData = await Blogs.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comments,
+          as: "comments",
+        },
+      ],
+    })
 
-router.get('/blogpost/:id', withAuth, async (req, res) => {
-    try {
-        const blogData = await Blogs.findByPk(req.params.id,
-            {
-                include: [ {
-                    model: Comments,
-                    as: 'comments'
-                },
-                
-                ]
-      });
-  
-      const blog = blogData.get({plain:true})
-  
-      res.render('blogpost', {
-        ...blog,
-        loggedIn: req.session.loggedIn
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-  
+    const blog = blogData.get({ plain: true })
 
-
-// router.get("/dashboard", withAuth, (req, res) => {
-//     if (!req.session.loggedIn){
-//         res.redirect("/login")
-//         return
-//     }
-//   res.render("dashboard"
-//   , {
-//     loggedIn: req.session.loggedIn,
-//   }
-//   )
-// })
-
-
-
-
-// router.get("/blogpost", async (req, res) => {
-//     try {
-//       const commentData = await Comments.findAll().catch((err) => {
-//         res.json(err)
-//       })
-//       const comments = commentData.map((comment) => comment.get({ plain: true }))
-  
-//       res.render("blogpost", {
-//         comments,
-//         loggedIn: req.session.loggedIn,
-//       })
-//     } catch (err) {
-//       console.log(err)
-//     }
-//   })
-
-
+    res.render("blogpost", {
+      ...blog,
+      loggedIn: req.session.loggedIn,
+    })
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
 
 module.exports = router

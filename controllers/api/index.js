@@ -2,9 +2,9 @@ const router = require('express').Router();
 const userRoutes = require('./user-routes');
 const authRoutes = require('./auth-routes');
 const postRoutes = require('./post-routes')
-const blogPostRoutes = require('./blogpost-routes')
+const blogPostRoutes = require('./comment-routes')
 
-
+//middleware for api routes
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes)
 router.use('/post', postRoutes)

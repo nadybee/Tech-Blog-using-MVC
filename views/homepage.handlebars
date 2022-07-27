@@ -1,11 +1,7 @@
 <h3 class="pb-3">Blog Posts:</h3>
 <div class="blog-posts">
 {{#each blogs as |blog|}}
-{{!-- {{#if loggedIn}} --}}
 <a href="/blogpost/{{blog.id}}" class="text-decoration-none"> 
-  {{!-- {{else}}
-     <a class="nav-link p-3" id="login" href="/login">
-    {{/if}} --}}
 <div class="card mb-5" id="{{blog.id}}">
     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
     <h5> {{blog.blog_title}}</h5>

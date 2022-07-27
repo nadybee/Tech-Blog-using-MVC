@@ -1,4 +1,4 @@
-<div class="blog-posts">
+<div id="blog-posts">
 	<h2>Your posts</h2>
 	<p>click on the blog to edit.</p>
   {{#each blogs as |blog|}}
@@ -46,7 +46,6 @@
   class="container d-flex justify-content-center flex-column align-items-center"
 >
 
-  {{! <form action="/dashboard" method="POST" class ="bg-light p-3 mb-3 w-100"> }}
   <form class="bg-light p-3 mb-3 w-100">
 
     <h3>Create a blog post</h3>
@@ -65,18 +64,13 @@
       ></textarea>
     </div>
 
-    {{! <div class="form-group">
-    		        <p><span class="require">*</span> - required fields</p>
-    		    </div> }}
+
 
     <div class="form-group mt-3">
       <button type="submit" class="btn btn-primary" id="create-blog">
         Create
       </button>
-      {{! <button class="btn btn-default">
-    		            Cancel
-    		        </button> }}
-    </div>
+   
 
   </form>
 </div>

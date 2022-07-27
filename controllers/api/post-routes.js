@@ -23,10 +23,10 @@ const withAuth = require("../../utils/auth");
    
   //allows user to edit there post  
 
-    router.put('/edit/:id', withAuth, (req, res) => {
+    router.put('/edit/:id', async (req, res) => {
       console.log(req.body)
       try{
-      const editBlogData = Blogs.update({
+      const editBlogData = await Blogs.update({
         blog_title: req.body.blog_title,
         content: req.body.content,
         date: new Date()
@@ -36,8 +36,9 @@ const withAuth = require("../../utils/auth");
           id: req.params.id
         }
       })
+      console.log('here' , editBlogData)
       res.status(200).json(editBlogData);
-      console.log(res)
+      // console.log(res)
       }
       catch (err){
         res.status(500).json(err);
